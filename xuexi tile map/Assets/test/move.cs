@@ -23,16 +23,27 @@ public sealed class move : MonoBehaviour
 
     }
 
-
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            rig.AddForce(new Vector2(10, 10),ForceMode2D.Impulse);
+        }
+    }
 
 
 
     void FixedUpdate()
     {
 
+      
+
+
+
+
         ve = Input.GetAxis("Horizontal");
         ve2 = Input.GetAxis("Vertical");
-        rig.velocity = new Vector2(ve * moveSpeed, ve2 * moveSpeed);
+        rig.velocity += new Vector2(ve * moveSpeed, ve2 * moveSpeed);
         if (ve < 0)
         {
 
@@ -48,7 +59,7 @@ public sealed class move : MonoBehaviour
 
 
         }
-        Debug.Log(ve);
+        
 
     }
 }
