@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scene/SimpleScene.unity
+- path: Assets/PolyNav2D/DEMO/DemoScene.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
