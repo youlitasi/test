@@ -39,12 +39,15 @@ public class ClickToMove : MonoBehaviour{
 	private bool IsMove=true;
 
      void Start()
+		
 	{
 		lastPos = transform.position;
 		remainWatchTime = watchTime;
 		InitPos = transform.position;
 		StopMoveTime = watchTime;
 		GetNewWayPoint();
+
+		
 	}
     public PolyNavAgent agent
 	{
@@ -58,10 +61,10 @@ public class ClickToMove : MonoBehaviour{
 
 	void Update()
 	{
-
+		
 
 		isMove();
-
+		
 		//离目标点距离小于停止距离的时候  说明进入观察时间  观察时间结束就要找个新的目标点
 		if (Vector3.Distance(wayPoint, transform.position) <= agent.stoppingDistance )
 		{
@@ -117,7 +120,8 @@ public class ClickToMove : MonoBehaviour{
 			if (lastPos != transform.position)  //若是上次静止的位置和当前位置不相同,就更新上次静止的位置和时间
 		    {
 			   IsMove = true;
-			   //更新上一帧数位置
+			//更新上一帧数位置
+		    	MoveDirection();
 			   lastPos = transform.position;
 		    }
 	    	else
@@ -149,6 +153,41 @@ public class ClickToMove : MonoBehaviour{
 
 
 	}
+	 //判断方向
+	void MoveDirection() 
+	{
+		if ((wayPoint - transform.position).x > 0)
+		{
+
+			transform.localScale = new Vector3(1, 1, 1);
+
+
+
+
+		}
+		else 
+		{
+
+			transform.localScale = new Vector3(-1, 1, 1);
+
+
+		}
+		
+
+
+
+	}
+
+	
+
+		
+
+
+
+
+
+	
+
 
 
 
